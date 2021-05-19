@@ -1,1 +1,5 @@
-
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/operation-5861/Dockerfile', '.' ]
+images:
+- 'gcr.io/operation/Dockerfile'
