@@ -1,8 +1,14 @@
 steps:
+- name: 'gcr.io/cloud-builders/git'
+  args:
+    - clone
+    - https://github.com/hermit-otaku/GP.git
+
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'test', '.' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/test', '.' ]
+
 - name: 'gcr.io/cloud-builders/docker'
   args: ['run', 'test']
+  
 images:
-- 'gcr.io/operation/Dockerfile'
-
+- 'gcr.io/$PROJECT_ID/test'
